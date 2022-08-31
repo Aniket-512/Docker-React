@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+# React App
+  web:
+    build: 
+# Required - specify build context or image
+      context: .
+# instead of just "build: ." as Dockerfile is of diff. name
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      # Bookmark node_modules folder so that it doesn't get overwritten
+      - /app/node_modules
+      # Map current dir in local to /app in container
+      - .:/app
