@@ -18,7 +18,7 @@ function App() {
           Learn React
         </a>
         <p>
-          Change in React App! - Aniket
+          My first React App! - Aniket
         </p>
       </header>
     </div>

@@ -15,3 +15,14 @@ services:
       - /app/node_modules
       # Map current dir in local to /app in container
       - .:/app
+
+  tests:
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
+# Ports not required as Test suite does not make use of it
+    volumes:
+      - /app/node_modules
+      - .:/app
+    # Override starting command
+    command: ["npm", "run", "test"]
