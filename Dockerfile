@@ -11,5 +11,6 @@ RUN npm run build
 
 # Next phase - serve web content
 FROM nginx
+EXPOSE 80
 COPY --from=builder /app/build /usr/share/nginx/html
 # Default command in base image starts up nginx for us
