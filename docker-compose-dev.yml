@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+# React App
+  web:
+    build: 
+# Required - specify build context or image
+      context: .
+# instead of just "build: ." as Dockerfile is of diff. name
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      # Bookmark node_modules folder so that it doesn't get overwritten
+      - /app/node_modules
+      # Map current dir in local to /app in container
+      - .:/app
+
+  tests:
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
+# Ports not required as Test suite does not make use of it
+    volumes:
+      - /app/node_modules
+      - .:/app
+    # Override starting command
+    command: ["npm", "run", "test"]
