@@ -15,7 +15,7 @@ jobs:
         - name: Build Docker image
           run: docker build -t ${{ secrets.DOCKER_USERNAME }}/docker-react -f Dockerfile.dev .
         - name: Run Tests
-          run: docker run -e CI=true ${{ secrets.DOCKER_USERNAME }}/docker-react npm test
+          run: docker run ${{ secrets.DOCKER_USERNAME }}/docker-react npm run test -- --coverage
 
         - name: Generate deployment package
           run: zip -r deploy.zip . -x '*.git*'
